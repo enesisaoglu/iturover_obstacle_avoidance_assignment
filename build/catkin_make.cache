@@ -1,0 +1,2 @@
+iturover_obstacle_avoidance_assignment:reactive_robot
+-DCATKIN_DEVEL_PREFIX=/home/enesisaoglu/rover2_ws/devel -DCMAKE_INSTALL_PREFIX=/home/enesisaoglu/rover2_ws/install -G Unix Makefiles
