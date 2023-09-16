@@ -27,17 +27,13 @@ class ReactiveRobot:
         ]
         print("--------------------------")
         print(center_min)
-        # *Geliştirilen algoritma*
         if center_min < 1:
-            # Max mesafedeki açıyı bul
             max_angle = ranges[0]
             for i in range(1, len(ranges)):
                 if ranges[i] > max_angle:
                     max_angle = ranges[i]
 
-            # O açıya doğru dön
             self.cmd_vel.angular.z = -(max_angle - 90) * 0.1
-            # Robotun x ekseninde ilerlemesini sağla
             self.cmd_vel.linear.x = 0.5
         if center_min >= 1:
             self.cmd_vel.linear.x = 1
