@@ -47,12 +47,12 @@ class ReactiveRobot:
             if front_center_obstacle_distance < threshold:
                 if right_obstacle_distance > left_obstacle_distance:
                     print("There is an obstacle, Robot is rotating to the right...")
-                    self.cmd_vel.linear.x =  0.2
-                    self.cmd_vel.angular.z = -0.4
+                    self.cmd_vel.linear.x =  0.3
+                    self.cmd_vel.angular.z = -0.6
                 else:
                     print("There is an obstacle, Robot is rotating to the left...")
-                    self.cmd_vel.linear.x =  0.2
-                    self.cmd_vel.angular.z = 0.4
+                    self.cmd_vel.linear.x =  0.3
+                    self.cmd_vel.angular.z = 0.6
             else:
                 print("No obstacle, keep moving forward...")
                 self.cmd_vel.linear.x = 0.7
@@ -62,7 +62,7 @@ class ReactiveRobot:
             self.cmd_vel.linear.x = 0.0
             self.cmd_vel.angular.z = 0.0
             rospy.loginfo("Time limit reached. Stopping...")
-        
+            
             # Delete the Gazebo light
             light_delete_req = DeleteLightRequest()
             light_delete_req.light_name = "sun"  # Specify the light name to delete
@@ -72,7 +72,7 @@ class ReactiveRobot:
             except rospy.ServiceException as e:
                 rospy.logerr(f"Service call to delete_light failed: {e}")
 
-            
+            # Unsubscribe from '/scan' topic...
             self.scan_sub.unregister()
             rospy.loginfo("/scan topic is unsubscribed.")
 
